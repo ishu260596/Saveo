@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorGrey"
     tools:context=".ui.views.MovieDetailActivity">
-
 
     <View
         android:id="@+id/view"
@@ -31,13 +31,15 @@
     <TextView
         android:id="@+id/tvSynopsis"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:lineSpacingExtra="@dimen/_9sdp"
         android:scrollbars="vertical"
         android:text="@string/hi_there_my_name_is_ishwar"
         android:textSize="@dimen/_15sdp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/cardView1"
         app:layout_constraintStart_toStartOf="@id/TextView"
         app:layout_constraintTop_toBottomOf="@id/TextView" />
 
@@ -98,8 +100,9 @@
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_150sdp"
             android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:elevation="@dimen/_10sdp"
+            android:transitionName="image_transaction"
             app:cardCornerRadius="@dimen/_5sdp"
             app:cardElevation="@dimen/_10sdp"
             app:layout_constraintStart_toStartOf="parent"
@@ -132,10 +135,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:fontFamily="sans-serif-medium"
-            android:gravity="center"
             android:text="@string/the_hateful_eight"
             android:textColor="@color/white"
             android:textSize="@dimen/_18sdp"
@@ -149,16 +151,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
             android:fontFamily="sans-serif-medium"
-            android:gravity="center"
             android:text="@string/r_3h_7min_30_dec_2015"
             android:textColor="@color/white"
-            android:textSize="@dimen/_12sdp"
+            android:textSize="@dimen/_10sdp"
             app:layout_constraintEnd_toEndOf="@id/tvMovieName"
             app:layout_constraintStart_toStartOf="@id/tvMovieName"
             app:layout_constraintTop_toBottomOf="@id/tvMovieName" />
 
         <RatingBar
-            android:id="@+id/myRatingBar"
+            android:id="@+id/starRatingBar"
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -175,8 +176,8 @@
             android:text="@string/_4_5"
             android:textColor="@color/white"
             android:textSize="@dimen/_9sdp"
-            app:layout_constraintBottom_toBottomOf="@id/myRatingBar"
-            app:layout_constraintStart_toEndOf="@+id/myRatingBar" />
+            app:layout_constraintBottom_toBottomOf="@id/starRatingBar"
+            app:layout_constraintStart_toEndOf="@+id/starRatingBar" />
 
         <TextView
             android:id="@+id/tvReview"
@@ -184,10 +185,9 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_10sdp"
             android:fontFamily="sans-serif-medium"
-            android:gravity="center"
             android:text="@string/reviews_10_critics_2345_user"
             android:textColor="@color/white"
-            android:textSize="@dimen/_12sdp"
+            android:textSize="@dimen/_10sdp"
             app:layout_constraintBottom_toBottomOf="@+id/cardView2"
             app:layout_constraintEnd_toEndOf="@id/tvMovieName"
             app:layout_constraintStart_toStartOf="@id/tvMovieName" />

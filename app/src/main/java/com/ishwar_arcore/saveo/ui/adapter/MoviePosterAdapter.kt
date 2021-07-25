@@ -35,7 +35,7 @@ class MoviePosterAdapter(private val moviePosters: List<MovieResponseItem>) :
 
         fun setData(model: MovieResponseItem) {
             val url = model.image.original
-            Glide.with(ivPoster).load(url).placeholder(R.drawable.pic).into(ivPoster)
+            Glide.with(ivPoster).load(url).placeholder(R.drawable.placeholder).into(ivPoster)
         }
 
     }

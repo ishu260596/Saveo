@@ -4,12 +4,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ishwar_arcore.saveo.R
 import com.ishwar_arcore.saveo.data.model.MovieResponseItem
 
-class MovieListAdapter(private val movieList: List<MovieResponseItem>) :
+class MovieListAdapter(
+    private val movieList: List<MovieResponseItem>,
+    private val listener: OnCardItemClickListener
+) :
     RecyclerView.Adapter<MovieListAdapter.MoviePosterViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviePosterViewHolder {
@@ -29,11 +33,14 @@ class MovieListAdapter(private val movieList: List<MovieResponseItem>) :
 
     inner class MoviePosterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val ivMovieImage = itemView.findViewById<ImageView>(R.id.ivImageMovie)
-
+        private val cardView = itemView.findViewById<CardView>(R.id.cvMovieList)
         fun setData(model: MovieResponseItem) {
             val url = model.image.original
             Glide.with(itemView).load(url)
-                .placeholder(R.drawable.pic).into(ivMovieImage)
+                .placeholder(R.drawable.placeholder).into(ivMovieImage)
+            cardView.setOnClickListener {
+                listener.onCardViewClick(model,ivMovieImage)
+            }
         }
     }
 }
