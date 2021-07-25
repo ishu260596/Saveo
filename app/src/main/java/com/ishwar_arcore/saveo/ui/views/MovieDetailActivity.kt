@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.ishwar_arcore.saveo.data.model.MovieResponseItem
 import com.ishwar_arcore.saveo.databinding.ActivityMovieDetailBinding
 import com.ishwar_arcore.saveo.utils.KEY
+import org.jsoup.Jsoup
 
 class MovieDetailActivity : AppCompatActivity() {
     private var mBinding: ActivityMovieDetailBinding? = null
@@ -31,10 +32,11 @@ class MovieDetailActivity : AppCompatActivity() {
                 /**
                  * Setting the summary to the text view
                  * and making the textview scrollable
+                 * and removing the HTML tags
                  * **/
                 tvSynopsis.movementMethod = ScrollingMovementMethod()
-                val summary = htmlToText(model?.summary.toString())
-                tvSynopsis.text = summary.toString()
+                val summary: String = Jsoup.parse(model?.summary).text()
+                tvSynopsis.text = summary
                 tvMovieName.text = model?.name.toString()
 
                 /**
@@ -53,10 +55,6 @@ class MovieDetailActivity : AppCompatActivity() {
                 tvTiming.text = newDate
             }
         }
-    }
-
-    private fun htmlToText(string: String): String? {
-        return string.replace("\\<.*?\\>", "");
     }
 
     /**

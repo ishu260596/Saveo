@@ -11,8 +11,17 @@ class MovieViewModel(private val movieRepo: MovieRepository) : ViewModel() {
         return movieRepo.getMovieList()
     }
 
-     fun getMoviesListApi(page: Int) {
+    fun getMoviesPagingList(): MutableLiveData<List<MovieResponseItem>> {
+        return movieRepo.getMoviePagingList()
+    }
+
+    fun getMoviesListApi(page: Int) {
         movieRepo.getMoviesListApi(page)
     }
+
+    fun getMoviesPaginationListApi(page: Int) {
+        movieRepo.getMoviesPaginationListApi(page)
+    }
+
 
 }
