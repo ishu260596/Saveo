@@ -1,7 +1,6 @@
 package com.ishwar_arcore.saveo.repository
 
-import com.ishwar_arcore.saveo.data.model.ResponseMovieApi
-import com.ishwar_arcore.saveo.data.model.ResponseMovieApiItem
+import com.ishwar_arcore.saveo.data.model.MovieResponseItem
 import com.ishwar_arcore.saveo.data.networking.ApiService
 import com.ishwar_arcore.saveo.data.networking.Resource
 import com.ishwar_arcore.saveo.data.networking.ResponseHandler
@@ -11,10 +10,10 @@ class MovieRepository {
 
     private val apiService = RetrofitClient.getInstance().create(ApiService::class.java)
 
-    val responseHandler = ResponseHandler()
+    private val responseHandler = ResponseHandler()
 
-    suspend fun getMoviesList(category: String): Resource<List<ResponseMovieApiItem>> {
-        val result = apiService.getNews(category)
+    suspend fun getMoviesList(page: Int): Resource<List<MovieResponseItem>> {
+        val result = apiService.getNews(page)
         return responseHandler.handleSuccess(result)
     }
 

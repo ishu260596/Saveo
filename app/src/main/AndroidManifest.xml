@@ -11,7 +11,7 @@
         android:roundIcon="@drawable/ic_saveo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Saveo">
-        <activity android:name=".ui.views.MovieDetailActivity"></activity>
+        <activity android:name=".ui.views.MovieDetailActivity" />
         <activity android:name=".ui.views.MovieListActivity" />
         <activity android:name=".ui.views.SplashScreenActivity">
             <intent-filter>

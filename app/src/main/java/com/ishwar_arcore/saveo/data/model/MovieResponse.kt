@@ -2,85 +2,10 @@ package com.ishwar_arcore.saveo.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class ResponseMovieApi(
+data class MovieResponse(
 
-	@field:SerializedName("ResponseMovieApi")
-	val responseMovieApi: List<ResponseMovieApiItem?>? = null
-)
-
-data class WebChannel(
-
-	@field:SerializedName("country")
-	val country: Any? = null,
-
-	@field:SerializedName("name")
-	val name: String? = null,
-
-	@field:SerializedName("id")
-	val id: Int? = null
-)
-
-data class Links(
-
-	@field:SerializedName("self")
-	val self: Self? = null,
-
-	@field:SerializedName("previousepisode")
-	val previousepisode: Previousepisode? = null
-)
-
-data class Country(
-
-	@field:SerializedName("code")
-	val code: String? = null,
-
-	@field:SerializedName("timezone")
-	val timezone: String? = null,
-
-	@field:SerializedName("name")
-	val name: String? = null
-)
-
-data class Schedule(
-
-	@field:SerializedName("days")
-	val days: List<String?>? = null,
-
-	@field:SerializedName("time")
-	val time: String? = null
-)
-
-data class Rating(
-
-	@field:SerializedName("average")
-	val average: Double? = null
-)
-
-data class Previousepisode(
-
-	@field:SerializedName("href")
-	val href: String? = null
-)
-
-data class Network(
-
-	@field:SerializedName("country")
-	val country: Country? = null,
-
-	@field:SerializedName("name")
-	val name: String? = null,
-
-	@field:SerializedName("id")
-	val id: Int? = null
-)
-
-data class ResponseMovieApiItem(
-
-	@field:SerializedName("score")
-	val score: Double? = null,
-
-	@field:SerializedName("show")
-	val show: Show? = null
+	@field:SerializedName("MovieResponse")
+	val movieResponse: List<MovieResponseItem?>? = null
 )
 
 data class Externals(
@@ -95,7 +20,19 @@ data class Externals(
 	val tvrage: Int? = null
 )
 
-data class Show(
+data class Links(
+
+	@field:SerializedName("self")
+	val self: Self? = null,
+
+	@field:SerializedName("previousepisode")
+	val previousepisode: Previousepisode? = null,
+
+	@field:SerializedName("nextepisode")
+	val nextepisode: Nextepisode? = null
+)
+
+data class MovieResponseItem(
 
 	@field:SerializedName("summary")
 	val summary: String? = null,
@@ -143,7 +80,7 @@ data class Show(
 	val schedule: Schedule? = null,
 
 	@field:SerializedName("webChannel")
-	val webChannel: Any? = null,
+	val webChannel: WebChannel? = null,
 
 	@field:SerializedName("genres")
 	val genres: List<String?>? = null,
@@ -164,6 +101,12 @@ data class Show(
 	val status: String? = null
 )
 
+data class Rating(
+
+	@field:SerializedName("average")
+	val average: Any? = null
+)
+
 data class Image(
 
 	@field:SerializedName("original")
@@ -173,8 +116,65 @@ data class Image(
 	val medium: String? = null
 )
 
+data class WebChannel(
+
+	@field:SerializedName("country")
+	val country: Country? = null,
+
+	@field:SerializedName("name")
+	val name: String? = null,
+
+	@field:SerializedName("id")
+	val id: Int? = null
+)
+
+data class Schedule(
+
+	@field:SerializedName("days")
+	val days: List<String?>? = null,
+
+	@field:SerializedName("time")
+	val time: String? = null
+)
+
+data class Nextepisode(
+
+	@field:SerializedName("href")
+	val href: String? = null
+)
+
 data class Self(
 
 	@field:SerializedName("href")
 	val href: String? = null
+)
+
+data class Network(
+
+	@field:SerializedName("country")
+	val country: Country? = null,
+
+	@field:SerializedName("name")
+	val name: String? = null,
+
+	@field:SerializedName("id")
+	val id: Int? = null
+)
+
+data class Previousepisode(
+
+	@field:SerializedName("href")
+	val href: String? = null
+)
+
+data class Country(
+
+	@field:SerializedName("code")
+	val code: String? = null,
+
+	@field:SerializedName("timezone")
+	val timezone: String? = null,
+
+	@field:SerializedName("name")
+	val name: String? = null
 )
