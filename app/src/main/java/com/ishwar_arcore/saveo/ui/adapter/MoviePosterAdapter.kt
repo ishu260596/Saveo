@@ -10,6 +10,7 @@ import com.ishwar_arcore.saveo.R
 import com.ishwar_arcore.saveo.data.model.MovieResponseItem
 
 class MoviePosterAdapter(private val moviePosters: List<MovieResponseItem>) :
+
     RecyclerView.Adapter<MoviePosterAdapter.MoviePosterViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviePosterViewHolder {

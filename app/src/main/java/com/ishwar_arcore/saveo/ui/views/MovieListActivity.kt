@@ -24,7 +24,8 @@ import com.ishwar_arcore.saveo.viewmodel.MovieViewModel
 import com.ishwar_arcore.saveo.viewmodel.ViewModelFactory
 
 class MovieListActivity : AppCompatActivity(), OnCardItemClickListener {
-    var COUNT = 1;
+    private var count = 1
+
     private var mBinding: ActivityMovieListBinding? = null
 
     private lateinit var movieViewModel: MovieViewModel
@@ -51,8 +52,8 @@ class MovieListActivity : AppCompatActivity(), OnCardItemClickListener {
      * **/
     private fun shimmerDisplay() {
         mBinding?.apply {
-            shimmerFrameLayoutHorizontal?.stopShimmerAnimation()
-            shimmerFrameLayoutVertical?.stopShimmerAnimation()
+            shimmerFrameLayoutHorizontal.stopShimmerAnimation()
+            shimmerFrameLayoutVertical.stopShimmerAnimation()
             shimmerFrameLayoutHorizontal.visibility = View.GONE
             shimmerFrameLayoutVertical.visibility = View.GONE
             rvMoviesList.visibility = View.VISIBLE
@@ -76,7 +77,7 @@ class MovieListActivity : AppCompatActivity(), OnCardItemClickListener {
         movieViewModel = ViewModelProvider(this, viewModelFactory)
             .get(MovieViewModel::class.java)
 
-        movieViewModel.getMoviesListApi(COUNT)
+        movieViewModel.getMoviesListApi(count)
 
         mBinding?.rvMoviesList?.apply {
             adapter = movieListAdapter
@@ -138,9 +139,9 @@ class MovieListActivity : AppCompatActivity(), OnCardItemClickListener {
                     pastVisibleItems = gridLayoutManager.findFirstVisibleItemPosition()
                     if (loading) {
                         if (visibleItemCount + pastVisibleItems >= totalItemCount) {
-                            COUNT++
+                            count++
                             loading = false
-                            movieViewModel.getMoviesPaginationListApi(COUNT)
+                            movieViewModel.getMoviesPaginationListApi(count)
                             movieViewModel.getMoviesPagingList().observe(this@MovieListActivity, {
                                 movieList.addAll(it)
                                 movieListAdapter.notifyDataSetChanged()

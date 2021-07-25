@@ -22,6 +22,9 @@ class MovieRepository {
         return moviePagingList
     }
 
+    /**
+     * calling API
+     * **/
     fun getMoviesListApi(page: Int) {
         val apiService = RetrofitClient.getRetrofitInstance()?.create(ApiService::class.java)
         apiService?.getMovies(page)?.enqueue(object : retrofit2.Callback<List<MovieResponseItem>> {
@@ -43,6 +46,9 @@ class MovieRepository {
 
     }
 
+    /**
+     * calling API
+     * **/
     fun getMoviesPaginationListApi(page: Int) {
         val apiService = RetrofitClient.getRetrofitInstance()?.create(ApiService::class.java)
         apiService?.getMovies(page)?.enqueue(object : retrofit2.Callback<List<MovieResponseItem>> {

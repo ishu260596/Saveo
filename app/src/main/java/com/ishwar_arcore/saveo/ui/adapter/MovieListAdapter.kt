@@ -38,6 +38,9 @@ class MovieListAdapter(
             val url = model.image.original
             Glide.with(itemView).load(url)
                 .placeholder(R.drawable.placeholder).into(ivMovieImage)
+            /**
+             * Giving the call back to the activity
+             * **/
             cardView.setOnClickListener {
                 listener.onCardViewClick(model,ivMovieImage)
             }
