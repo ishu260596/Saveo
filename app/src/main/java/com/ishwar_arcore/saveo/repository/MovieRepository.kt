@@ -1,20 +1,40 @@
 package com.ishwar_arcore.saveo.repository
 
+import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import com.ishwar_arcore.saveo.data.model.MovieResponseItem
 import com.ishwar_arcore.saveo.data.networking.ApiService
-import com.ishwar_arcore.saveo.data.networking.Resource
-import com.ishwar_arcore.saveo.data.networking.ResponseHandler
 import com.ishwar_arcore.saveo.data.networking.RetrofitClient
+import com.ishwar_arcore.saveo.utils.TAG
+import retrofit2.Call
+import retrofit2.Response
 
 class MovieRepository {
 
-    private val apiService = RetrofitClient.getInstance().create(ApiService::class.java)
+    private var movieList: MutableLiveData<List<MovieResponseItem>> = MutableLiveData()
 
-    private val responseHandler = ResponseHandler()
-
-    suspend fun getMoviesList(page: Int): Resource<List<MovieResponseItem>> {
-        val result = apiService.getNews(page)
-        return responseHandler.handleSuccess(result)
+    fun getMovieList(): MutableLiveData<List<MovieResponseItem>> {
+        return movieList
     }
 
+     fun getMoviesListApi(page: Int) {
+        val apiService = RetrofitClient.getRetrofitInstance()?.create(ApiService::class.java)
+        apiService?.getMovies(page)?.enqueue(object : retrofit2.Callback<List<MovieResponseItem>> {
+            override fun onResponse(
+                call: Call<List<MovieResponseItem>>,
+                response: Response<List<MovieResponseItem>>
+            ) {
+                Log.d(TAG, "Success in fetching movie")
+                val list = response.body()
+                if (list != null) {
+                    movieList.postValue(response.body())
+                }
+            }
+
+            override fun onFailure(call: Call<List<MovieResponseItem>>, t: Throwable) {
+                Log.d(TAG, "Error in fetching movie", t)
+            }
+        })
+
+    }
 }

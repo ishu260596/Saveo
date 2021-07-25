@@ -12,13 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Saveo">
         <activity android:name=".ui.views.MovieDetailActivity" />
-        <activity android:name=".ui.views.MovieListActivity" />
-        <activity android:name=".ui.views.SplashScreenActivity">
+        <activity android:name=".ui.views.MovieListActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ui.views.SplashScreenActivity">
+
         </activity>
     </application>
 

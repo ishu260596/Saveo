@@ -19,34 +19,33 @@ class MovieListActivity : AppCompatActivity() {
     private var mBinding: ActivityMovieListBinding? = null
 
     private lateinit var movieViewModel: MovieViewModel
-    private lateinit var movieRepo: MovieRepository
     private lateinit var moviePosterAdapter: MoviePosterAdapter
     private lateinit var movieListAdapter: MovieListAdapter
-    private var moviePosters = mutableListOf<MovieResponseItem>()
     private var movieList = mutableListOf<MovieResponseItem>()
+    private var moviePosterList = mutableListOf<MovieResponseItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_movie_list)
+        mBinding =
+            ActivityMovieListBinding.inflate(layoutInflater)
+        setContentView(mBinding?.root)
         initViews()
-        movieViewModel.getMovies(1).observe(this, Observer {
-            if (it != null)
-                updateRecyclerView(it)
+
+        movieViewModel.getMoviesList().observe(this, Observer {
+            updateRecyclerView(it)
         })
     }
 
-    private fun updateRecyclerView(it: List<MovieResponseItem>) {
-
-    }
-
     private fun initViews() {
-        moviePosterAdapter = MoviePosterAdapter(moviePosters)
+        moviePosterAdapter = MoviePosterAdapter(moviePosterList)
         movieListAdapter = MovieListAdapter(movieList)
 
-        movieRepo = MovieRepository()
+        val movieRepo = MovieRepository()
         val viewModelFactory = ViewModelFactory(movieRepo)
         movieViewModel = ViewModelProvider(this, viewModelFactory)
             .get(MovieViewModel::class.java)
+
+        movieViewModel.getMoviesListApi(1)
 
         mBinding?.rvMoviesList?.apply {
             adapter = movieListAdapter
@@ -64,6 +63,16 @@ class MovieListActivity : AppCompatActivity() {
             )
         }
     }
+
+    private fun updateRecyclerView(it: List<MovieResponseItem>) {
+        movieList.addAll(it)
+        for (i in 0..8) {
+            moviePosterList.add(movieList[i])
+        }
+        movieListAdapter.notifyDataSetChanged()
+        moviePosterAdapter.notifyDataSetChanged()
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()

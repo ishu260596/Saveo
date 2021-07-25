@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgColor"
+    android:orientation="vertical"
     tools:context=".ui.views.MovieListActivity">
 
     <LinearLayout
@@ -33,7 +34,8 @@
             android:layout_height="@dimen/_180sdp"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_7sdp"
-            android:layout_marginEnd="@dimen/_10sdp" />
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:orientation="horizontal" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -51,7 +53,10 @@
             android:id="@+id/rvMoviesList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_5sdp" />
+            android:layout_marginTop="@dimen/_5sdp"
+            android:orientation="vertical" />
+
     </LinearLayout>
+
 
 </ScrollView>
