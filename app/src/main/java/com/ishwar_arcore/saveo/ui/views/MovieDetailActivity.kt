@@ -1,10 +1,13 @@
 package com.ishwar_arcore.saveo.ui.views
 
+import android.graphics.Color
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.method.ScrollingMovementMethod
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.cunoraz.tagview.Tag
+import com.ishwar_arcore.saveo.R
 import com.ishwar_arcore.saveo.data.model.MovieResponseItem
 import com.ishwar_arcore.saveo.databinding.ActivityMovieDetailBinding
 import com.ishwar_arcore.saveo.utils.KEY
@@ -30,7 +33,7 @@ class MovieDetailActivity : AppCompatActivity() {
                     .into(ivMoviePoster)
 
                 /**
-                 * Setting the summary to the text view
+                 * Set the summary to the text view
                  * and making the textview scrollable
                  * and removing the HTML tags
                  * **/
@@ -48,11 +51,25 @@ class MovieDetailActivity : AppCompatActivity() {
                 tvStarRating.text = (ratingString)
 
                 /**
-                 * Setting the date
+                 * Set the date
                  * **/
                 val date = formatDate(model?.premiered)
                 val newDate = "R | 2h 17min | ${date}"
                 tvTiming.text = newDate
+
+                /**
+                 * Set the tags
+                 * **/
+                val tagsList = model?.genres
+                var tags = ArrayList<Tag>()
+                if (tagsList != null) {
+                    for (element in tagsList) {
+                        val tag = Tag(element)
+                        tag.radius = 10f
+                        tags.add(tag)
+                    }
+                }
+                tagContainerLayout.addTags(tags)
             }
         }
     }

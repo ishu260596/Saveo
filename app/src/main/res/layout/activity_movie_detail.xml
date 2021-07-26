@@ -158,6 +158,22 @@
             app:layout_constraintStart_toStartOf="@id/tvMovieName"
             app:layout_constraintTop_toBottomOf="@id/tvMovieName" />
 
+        <com.cunoraz.tagview.TagView
+            xmlns:tagview="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/tagContainerLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_7sdp"
+            app:layout_constraintEnd_toEndOf="@id/tvTiming"
+            app:layout_constraintStart_toStartOf="@id/tvTiming"
+            app:layout_constraintTop_toBottomOf="@id/tvTiming"
+            tagview:lineMargin="@dimen/_5sdp"
+            tagview:tagMargin="@dimen/_5sdp"
+            tagview:textPaddingLeft="@dimen/_5sdp"
+            tagview:textPaddingTop="@dimen/_3sdp"
+            tagview:textPaddingRight="@dimen/_5sdp"
+            tagview:textPaddingBottom="@dimen/_3sdp" />
+
         <RatingBar
             android:id="@+id/starRatingBar"
             style="?android:attr/ratingBarStyleSmall"
